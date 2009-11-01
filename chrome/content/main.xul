@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://projectname/skin/main.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://projectname/locale/main.dtd">
+
+<window id="main" xmlns:html="http://www.w3.org/1999/xhtml"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				title="&title;" style="width: 700px; height: 500px;" persist="screenX screenY width height sizemode">
+
+  <script type="application/x-javascript" src="chrome://global/content/printUtils.js"/>
+  <script type="application/x-javascript" src="chrome://projectname/content/controller.js"/>
+  <script type="application/x-javascript" src="chrome://projectname/content/main.js"/>
+
+  <commandset id="cmdset_file">
+    <command id="cmd_pageSetup" label="&filePageSetup.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+    <command id="cmd_print" label="&filePrint.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+    <command id="cmd_exit" label="&fileExit.label;" oncommand="VLCUtils.openFile()"/>
+  </commandset>
+
+  <commandset id="cmdset_edit">
+    <command id="cmd_copy" label="&editCopy.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+    <command id="cmd_selectAll" label="&editSelectAll.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+  </commandset>
+
+  <commandset id="cmdset_tools">
+    <command id="cmd_options" label="&toolsOptions.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+  </commandset>
+  <commandset id="cmdset_help">
+    <command id="cmd_about" label="&helpAbout.label;" oncommand="CommandUpdater.doCommand(this.id);"/>
+  </commandset>
+
+  <keyset id="keyset_main">
+    <key id="key_copy" key="&editCopy.key;" modifiers="accel" command="cmd_copy"/>
+    <key id="key_selectAll" key="&editSelectAll.key;" modifiers="accel" command="cmd_selectAll"/>
+    <key id="key_print" key="&filePrint.key;" modifiers="accel" command="cmd_print"/>
+  </keyset>
+
+  <popupset>
+  </popupset>
+
+  <toolbox>
+    <menubar id="menubar">
+      <menu id="file_menu" label="&file.label;">
+        <menupopup id="file_popup">
+          <menuitem command="cmd_exit"/>
+        </menupopup>
+      </menu>
+      <menu id="edit_menu" label="&edit.label;">
+        <menupopup id="edit_popup">
+        </menupopup>
+      </menu>
+      <menu id="tools_menu" label="&tools.label;">
+        <menupopup id="tools_popup">
+          <menuitem command="cmd_options"/>
+        </menupopup>
+      </menu>
+      <menu id="help_menu" label="&help.label;">
+        <menupopup id="help_popup">
+          <menuitem command="cmd_about"/>
+        </menupopup>
+      </menu>
+    </menubar>
+  </toolbox>
+  <hbox id="main_box" flex="1">
+    <vbox id="workspace_box" flex="1">
+		<html:embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2"
+			width="640"
+			height="480"
+			target="file://C:\video.avi"
+			id="vlc">
+		  </html:embed>
+    </vbox>
+  </hbox>
+  
+</window>
