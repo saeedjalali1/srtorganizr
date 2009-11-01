@@ -1,0 +1,3 @@
+content        projectname       content/
+skin           projectname       classic/1.0       skin/
+locale         projectname       en-US             locale/en-US/
